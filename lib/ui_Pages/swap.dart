@@ -1,8 +1,13 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:crypto/ui_Pages/widgets/Coin.dart';
 import 'package:crypto/ui_Pages/widgets/Details.dart';
 import 'package:crypto/ui_Pages/widgets/slidder.dart';
 import 'package:crypto/ui_Pages/widgets/slidetopay.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/ui_Pages/widgets/coincard.dart';
+import 'package:http/http.dart' as http;
 
 class Uiswap extends StatefulWidget {
   const Uiswap({super.key});
@@ -16,6 +21,13 @@ class _UiswapState extends State<Uiswap> {
   bool _previous = false;
   bool _mark = false;
   bool _smark = true;
+  @override
+  // void initState() {
+  //   fetchCoin();
+  //   Timer.periodic(Duration(seconds: 10), (timer) => fetchCoin());
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'bottomslide.dart';
 
 class CoinCard extends StatefulWidget {
   const CoinCard({super.key});
@@ -67,17 +68,31 @@ class _CoinCardState extends State<CoinCard> {
                     children: [
                       FittedBox(
                         fit: BoxFit.scaleDown,
-                        child: Text(
-                          "BTC",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                        child: TextButton(
+                          onPressed: () {
+                            showModalBottomSheet(
+                                backgroundColor: Colors.black,
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    child: BottomView(),
+                                    height: 400,
+                                  );
+                                });
+                          },
+                          child: Text(
+                            "BTC",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
+                          style: TextButton.styleFrom(),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(top: 20, left: 1.0),
                         child: Container(
                             height: 10,
                             width: 10,
