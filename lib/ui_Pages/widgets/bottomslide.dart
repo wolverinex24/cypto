@@ -44,7 +44,23 @@ class _BottomViewState extends State<BottomView> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30, left: 8.0, right: 8.0),
+              padding: const EdgeInsets.only(top: 20, left: 30),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      'Popular tokens',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 8.0, right: 8.0),
               child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(
@@ -58,6 +74,7 @@ class _BottomViewState extends State<BottomView> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     child: TextFormField(
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         icon: Icon(
                           Icons.search,

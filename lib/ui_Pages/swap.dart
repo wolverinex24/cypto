@@ -9,6 +9,7 @@ import 'package:crypto/ui_Pages/widgets/slidder.dart';
 import 'package:crypto/ui_Pages/widgets/slidetopay.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/ui_Pages/widgets/coincard.dart';
+import 'package:get/route_manager.dart';
 import 'package:http/http.dart' as http;
 
 class Uiswap extends StatefulWidget {
@@ -39,7 +40,8 @@ class _UiswapState extends State<Uiswap> {
                     color: Colors.white,
                     icon: Icon(Icons.arrow_back_ios),
                     onPressed: () {
-                      Null;
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, 'home', (route) => false);
                     },
                   ),
                 ],

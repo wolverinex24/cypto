@@ -80,15 +80,15 @@ class CoinCard extends StatelessWidget {
                       fit: BoxFit.scaleDown,
                       child: TextButton(
                         onPressed: () {
-                          showModalBottomSheet(
-                              backgroundColor: Colors.black,
-                              context: context,
-                              builder: (BuildContext context) {
-                                return Container(
-                                  child: BottomView(),
-                                  height: 400,
-                                );
-                              });
+                          // showModalBottomSheet(
+                          //     backgroundColor: Colors.black,
+                          //     context: context,
+                          //     builder: (BuildContext context) {
+                          //       return Container(
+                          //         child: BottomView(),
+                          //         height: 400,
+                          //       );
+                          //     });
                         },
                         child: Text(
                           "${code}",
