@@ -1,4 +1,8 @@
+import 'package:crypto/ui_Pages/widgets/Details.dart';
+import 'package:crypto/ui_Pages/widgets/slidder.dart';
+import 'package:crypto/ui_Pages/widgets/slidetopay.dart';
 import 'package:flutter/material.dart';
+import 'package:crypto/ui_Pages/widgets/coincard.dart';
 
 class Uiswap extends StatefulWidget {
   const Uiswap({super.key});
@@ -8,11 +12,11 @@ class Uiswap extends StatefulWidget {
 }
 
 class _UiswapState extends State<Uiswap> {
+  PageController controller = new PageController();
+  bool _previous = false;
+  bool _mark = false;
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 393;
-    double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -57,44 +61,114 @@ class _UiswapState extends State<Uiswap> {
               SizedBox(
                 height: 30,
               ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      width: 2,
-                      color: Colors.grey,
-                    )),
-                height: 100,
-                width: 400,
-                child: Stack(
+              CoinCard(),
+              SizedBox(
+                height: 10,
+              ),
+              CoinCard(),
+              Padding(
+                padding: const EdgeInsets.only(top: 100, left: 30, right: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
+                    Column(
                       children: [
-                        Align(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(left: 15, bottom: 25),
-                            child: SizedBox(
-                              width: 39 * fem,
-                              height: 39 * fem,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(19.5 * fem),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(
-                                      'assets/ellipse-95-bg-v3S.png',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                        Text(
+                          'Slippage',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Container(
+                          height: 3,
+                          width: 50,
+                          decoration: BoxDecoration(color: Colors.blue),
+                          child: Text('_'),
                         ),
                       ],
                     ),
+                    Column(
+                      children: [
+                        Text('Detail', style: TextStyle(color: Colors.white)),
+                        _mark
+                            ? Container(
+                                height: 3,
+                                width: 50,
+                                decoration: BoxDecoration(color: Colors.blue),
+                                child: Text('_'),
+                              )
+                            : Container(
+                                height: 3,
+                                width: 50,
+                                decoration: BoxDecoration(color: Colors.black),
+                              )
+                      ],
+                    ),
                   ],
+                ),
+              ),
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey[900],
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 180,
+                      width: 600,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 55,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey[900],
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 130,
+                      width: 500,
+                      child: PageView(
+                          controller: controller,
+                          physics: NeverScrollableScrollPhysics(),
+                          children: [
+                            Slidder(),
+                            Details(),
+                          ]),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 190, left: 300),
+                    child: TextButton(
+                        onPressed: () {
+                          if (_previous) {
+                            controller.previousPage(
+                                duration: Duration(milliseconds: 200),
+                                curve: Curves.easeIn);
+                            _previous = false;
+                            _mark = false;
+                          } else {
+                            controller.nextPage(
+                                duration: Duration(milliseconds: 200),
+                                curve: Curves.easeIn);
+                            _previous = true;
+                            _mark = true;
+                          }
+                        },
+                        child: Text(
+                          'Done',
+                        )),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Container(
+                  height: 55,
+                  width: 600,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: pay(),
                 ),
               ),
             ],
