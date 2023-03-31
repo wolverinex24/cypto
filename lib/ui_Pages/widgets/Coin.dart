@@ -37,11 +37,11 @@ class Datum {
     required this.icon,
   });
 
-  String name;
-  String code;
-  String price;
-  String coin;
-  String icon;
+  String? name;
+  String? code;
+  String? price;
+  String? coin;
+  String? icon;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         name: json["name"],

@@ -1,24 +1,10 @@
 import 'package:crypto/controller/Coin_controller.dart';
+import 'package:crypto/ui_Pages/widgets/bottomslide.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'bottomslide.dart';
 
-class CoinCard extends StatelessWidget {
-  CoinCard({
-    @required this.name,
-    @required this.code,
-    @required this.imageUrl,
-    @required this.price,
-    @required this.coin,
-  });
-
-  String? name;
-  String? code;
-  String? imageUrl;
-  String? price;
-  String? coin;
-
-  // const CoinCard({super.key});
+class Downcoin extends StatelessWidget {
+  // const Downcoin({super.key});
 
   OpenseaController openseaController = Get.put(OpenseaController());
 
@@ -55,7 +41,8 @@ class CoinCard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 10.0, right: 10.0, top: 10.0, bottom: 10.0),
-                      child: Image.network("${imageUrl}"),
+                      child: Image.network(
+                          "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"),
                     ),
                   ),
                   SizedBox(
@@ -93,7 +80,7 @@ class CoinCard extends StatelessWidget {
                                 });
                           },
                           child: Text(
-                            "${code}",
+                            "BTC",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 25,
@@ -123,7 +110,7 @@ class CoinCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    '${price}',
+                    '1814789.18',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -131,7 +118,7 @@ class CoinCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${coin}',
+                    '0.5',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,

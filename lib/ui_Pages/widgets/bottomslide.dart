@@ -3,7 +3,11 @@ import 'dart:convert';
 import 'package:crypto/ui_Pages/widgets/Coin.dart';
 import 'package:crypto/ui_Pages/widgets/coincard.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
+
+import '../../controller/Coin_controller.dart';
 
 class BottomView extends StatefulWidget {
   const BottomView({super.key});
@@ -13,6 +17,7 @@ class BottomView extends StatefulWidget {
 }
 
 class _BottomViewState extends State<BottomView> {
+  OpenseaController openseaController = Get.put(OpenseaController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,7 +75,17 @@ class _BottomViewState extends State<BottomView> {
                 shrinkWrap: true,
                 itemCount: 11,
                 itemBuilder: (context, index) {
-                  return CoinCard();
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: CoinCard(
+                      name: openseaController.openseaModel?.data[index].name,
+                      code: openseaController.openseaModel?.data[index].code,
+                      imageUrl:
+                          openseaController.openseaModel?.data[index].icon,
+                      price: openseaController.openseaModel?.data[index].price,
+                      coin: openseaController.openseaModel?.data[index].coin,
+                    ),
+                  );
                 },
               ))
         ],

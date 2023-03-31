@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:crypto/contcoin/downcoin.dart';
+import 'package:crypto/contcoin/upcoin.dart';
 import 'package:crypto/ui_Pages/widgets/Coin.dart';
 import 'package:crypto/ui_Pages/widgets/Details.dart';
 import 'package:crypto/ui_Pages/widgets/slidder.dart';
@@ -68,11 +70,11 @@ class _UiswapState extends State<Uiswap> {
               SizedBox(
                 height: 30,
               ),
-              CoinCard(),
+              Upcoin(),
               SizedBox(
                 height: 10,
               ),
-              CoinCard(),
+              Downcoin(),
               Padding(
                 padding: const EdgeInsets.only(top: 100, left: 30, right: 30),
                 child: Row(
