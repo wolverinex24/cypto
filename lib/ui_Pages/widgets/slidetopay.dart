@@ -12,6 +12,7 @@ class _payState extends State<pay> {
   @override
   Widget build(BuildContext context) {
     return SlideAction(
+      outerColor: Colors.black,
       text: 'Slide To Pay',
       onSubmit: () {},
     );

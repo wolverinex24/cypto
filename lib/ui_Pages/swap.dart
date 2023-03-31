@@ -15,6 +15,7 @@ class _UiswapState extends State<Uiswap> {
   PageController controller = new PageController();
   bool _previous = false;
   bool _mark = false;
+  bool _smark = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,12 +78,18 @@ class _UiswapState extends State<Uiswap> {
                           'Slippage',
                           style: TextStyle(color: Colors.white),
                         ),
-                        Container(
-                          height: 3,
-                          width: 50,
-                          decoration: BoxDecoration(color: Colors.blue),
-                          child: Text('_'),
-                        ),
+                        _smark
+                            ? Container(
+                                height: 3,
+                                width: 50,
+                                decoration: BoxDecoration(color: Colors.blue),
+                                child: Text('_'),
+                              )
+                            : Container(
+                                height: 3,
+                                width: 50,
+                                decoration: BoxDecoration(color: Colors.black),
+                              ),
                       ],
                     ),
                     Column(
@@ -99,7 +106,7 @@ class _UiswapState extends State<Uiswap> {
                                 height: 3,
                                 width: 50,
                                 decoration: BoxDecoration(color: Colors.black),
-                              )
+                              ),
                       ],
                     ),
                   ],
@@ -140,18 +147,24 @@ class _UiswapState extends State<Uiswap> {
                     padding: const EdgeInsets.only(top: 190, left: 300),
                     child: TextButton(
                         onPressed: () {
+                          setState(() {
+                            _mark = true;
+                            _smark = false;
+                          });
                           if (_previous) {
                             controller.previousPage(
                                 duration: Duration(milliseconds: 200),
                                 curve: Curves.easeIn);
                             _previous = false;
                             _mark = false;
+                            _smark = true;
                           } else {
                             controller.nextPage(
                                 duration: Duration(milliseconds: 200),
                                 curve: Curves.easeIn);
                             _previous = true;
                             _mark = true;
+                            _smark = false;
                           }
                         },
                         child: Text(
@@ -166,6 +179,10 @@ class _UiswapState extends State<Uiswap> {
                   height: 55,
                   width: 600,
                   decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.grey,
+                    ),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: pay(),
