@@ -23,7 +23,7 @@ class _SlidderState extends State<Slidder> {
             max: 10,
             value: _slippage,
             divisions: 100,
-            label: _slippage.toInt().toString(),
+            label: _slippage.toInt().toString() + "%",
             onChanged: ((double value) {
               setState(() {
                 _slippage = value;

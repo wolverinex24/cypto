@@ -83,7 +83,7 @@ class _UiswapState extends State<Uiswap> {
                     Column(
                       children: [
                         Text(
-                          'Slippage',
+                          'SLIPPAGE',
                           style: TextStyle(color: Colors.white),
                         ),
                         _smark
@@ -102,7 +102,7 @@ class _UiswapState extends State<Uiswap> {
                     ),
                     Column(
                       children: [
-                        Text('Detail', style: TextStyle(color: Colors.white)),
+                        Text('DETAILS', style: TextStyle(color: Colors.white)),
                         _mark
                             ? Container(
                                 height: 3,
