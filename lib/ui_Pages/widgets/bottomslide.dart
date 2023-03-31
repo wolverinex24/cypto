@@ -65,9 +65,14 @@ class _BottomViewState extends State<BottomView> {
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CoinCard(),
-          )
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 11,
+                itemBuilder: (context, index) {
+                  return CoinCard();
+                },
+              ))
         ],
       ),
     );

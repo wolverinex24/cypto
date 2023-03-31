@@ -21,12 +21,6 @@ class _UiswapState extends State<Uiswap> {
   bool _previous = false;
   bool _mark = false;
   bool _smark = true;
-  @override
-  // void initState() {
-  //   fetchCoin();
-  //   Timer.periodic(Duration(seconds: 10), (timer) => fetchCoin());
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
