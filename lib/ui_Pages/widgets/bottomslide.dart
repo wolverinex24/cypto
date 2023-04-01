@@ -18,6 +18,7 @@ class BottomView extends StatefulWidget {
 
 class _BottomViewState extends State<BottomView> {
   OpenseaController openseaController = Get.put(OpenseaController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -92,7 +93,7 @@ class _BottomViewState extends State<BottomView> {
                 child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 11,
+                  itemCount: openseaController.openseaModel?.data.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
@@ -113,4 +114,15 @@ class _BottomViewState extends State<BottomView> {
       ),
     );
   }
+  // void _runfilter(String enteredKeyword){
+  //   List<collegeClass> results=[];
+  //   if(enteredKeyword.isEmpty){
+  //     results=;
+  //   }else{
+  //     results=_allcoins.where((item)=>item.names!.toLowerCase().contains(enteredKeyword.toLowerCase())).toList();
+  //   }
+  //   setState(() {
+  //     _foundlist=results;
+  //   });
+  // }
 }

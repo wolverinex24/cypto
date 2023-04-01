@@ -24,6 +24,7 @@ class _UiswapState extends State<Uiswap> {
   bool _previous = false;
   bool _mark = false;
   bool _smark = true;
+  bool _flip = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class _UiswapState extends State<Uiswap> {
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 5, right: 5),
+          margin: EdgeInsets.only(left: 15, right: 15),
           child: Column(
             children: [
               Row(
@@ -72,11 +73,39 @@ class _UiswapState extends State<Uiswap> {
               SizedBox(
                 height: 30,
               ),
-              Upcoin(),
-              SizedBox(
-                height: 10,
+              Stack(
+                children: [
+                  _flip ? Downcoin() : Upcoin(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 110),
+                    child: _flip ? Upcoin() : Downcoin(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 100,
+                      top: 85,
+                    ),
+                    child: SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          setState(() {
+                            _flip = !_flip;
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/horizontaltoprightmain.png",
+                          scale: 2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Downcoin(),
               Padding(
                 padding: const EdgeInsets.only(top: 100, left: 30, right: 30),
                 child: Row(
